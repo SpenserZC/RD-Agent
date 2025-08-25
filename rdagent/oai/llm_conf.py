@@ -12,8 +12,8 @@ class LLMSettings(ExtendedBaseSettings):
     # backend
     backend: str = "rdagent.oai.backend.LiteLLMAPIBackend"
 
-    chat_model: str = "gpt-4-turbo"
-    embedding_model: str = "text-embedding-3-small"
+    chat_model: str = "dashscope/qwen-plus"
+    embedding_model: str = "openai/text-embedding-v1"
 
     reasoning_effort: Literal["low", "medium", "high"] | None = None
     enable_response_schema: bool = True
@@ -60,9 +60,9 @@ class LLMSettings(ExtendedBaseSettings):
     init_chat_cache_seed: int = 42
 
     # Chat configs
-    openai_api_key: str = ""  # TODO: simplify the key design.
-    chat_openai_api_key: str | None = None
-    chat_openai_base_url: str | None = None  #
+    openai_api_key: str = "sk-a2642d571b5c409fb59adf7f7d639a46"  # TODO: simplify the key design.
+    chat_openai_api_key: str = "sk-a2642d571b5c409fb59adf7f7d639a46"
+    chat_openai_base_url: str = "https://dashscope.aliyuncs.com/compatible-mode/v1"  #
     chat_azure_api_base: str = ""
     chat_azure_api_version: str = ""
     chat_max_tokens: int | None = None
@@ -80,8 +80,8 @@ class LLMSettings(ExtendedBaseSettings):
     Therefore, we make the system_prompt_role customizable to ensure successful calls."""
 
     # Embedding configs
-    embedding_openai_api_key: str = ""
-    embedding_openai_base_url: str = ""
+    embedding_openai_api_key: str = "sk-a2642d571b5c409fb59adf7f7d639a46"
+    embedding_openai_base_url: str = "https://dashscope.aliyuncs.com/compatible-mode/v1"
     embedding_azure_api_base: str = ""
     embedding_azure_api_version: str = ""
     embedding_max_str_num: int = 50

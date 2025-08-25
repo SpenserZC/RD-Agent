@@ -80,6 +80,8 @@ class LiteLLMAPIBackend(APIBackend):
             )
         response = embedding(
             model=model_name,
+            api_key=LITELLM_SETTINGS.embedding_openai_api_key,
+            api_base=LITELLM_SETTINGS.embedding_openai_base_url,    
             input=input_content_list,
         )
         response_list = [data["embedding"] for data in response.data]
@@ -129,8 +131,11 @@ class LiteLLMAPIBackend(APIBackend):
                         else:
                             reasoning_effort = None
                     break
+        print(model)
         response = completion(
             model=model,
+            api_key=LITELLM_SETTINGS.chat_openai_api_key,
+            api_base=LITELLM_SETTINGS.chat_openai_base_url,
             messages=messages,
             stream=LITELLM_SETTINGS.chat_stream,
             temperature=temperature,
